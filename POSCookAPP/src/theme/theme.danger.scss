@@ -1,0 +1,51 @@
+.danger-theme {
+  $danger-color: #f53d3d;
+  .bar-button-default-md{
+    color:#fff !important;
+  }
+  ion-content {
+    background-color: #fff;
+  }
+
+  .toolbar-background {
+    background-color: $danger-color !important;
+  }
+  .toolbar-background-md{
+    background-color: $danger-color !important;
+  }
+
+  .toolbar-title {
+    color: #fff;
+  }
+
+  .tabs-md {
+    .tabbar{
+      background: $danger-color !important;
+    }
+    .tab-button {
+    color: #55acee;
+    //background-color: #55acee;
+    }
+    .tab-button[aria-selected="true"] {
+      color: #fff;
+      font-weight: bold;
+      .tab-button-icon {
+        color: $danger-color;
+      }
+    }
+    .tab-button-icon {
+      color: gray;
+    }
+  }
+
+  //.tab-button-text {
+  //  color: lightseagreen;
+  //}
+
+  .theme-icon {
+    color: $danger-color;
+  }
+   .theme-button-bg{
+    background-color: $danger-color;
+  }
+}

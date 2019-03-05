@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar>
+
+    <ion-row>
+      <ion-col text-left>
+        <ion-title (click)="gotoSysSetting();">
+          <ion-icon name="settings"></ion-icon> 设置
+        </ion-title>
+
+      </ion-col>
+      <ion-col text-center>
+        <ion-title>
+          {{this.formValue["cantingName"]}} - {{this.formValue["machineName"]}} - {{curMealName}}
+        </ion-title>
+      </ion-col>
+      <ion-col text-right>
+        <ion-title>{{formValue["strTimeNowShow"]}}</ion-title>
+      </ion-col>
+    </ion-row>
+
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="bgimg2" text-center >
+
+    <ion-fab right top>
+        <button ion-fab color="danger" style="font-size:2rem;">{{ this.formValue["unCooked"]}}</button>
+      </ion-fab>
+      <ion-fab right top style="margin-top:6rem;">
+          <button ion-fab color="primary" style="font-size:2rem;">{{ this.formValue["Cooked"]}}</button>
+        </ion-fab>
+  <ion-grid text-center style="height:99%;">
+    <ion-row >
+      <ion-col col-1 style="padding-top: 6rem;">
+      </ion-col>
+      <ion-col >
+        <ion-card style="margin-top: 0rem;" *ngIf="formValue['orders'].length==0">
+          <ion-card-content text-center>
+            <p style="color:gray;font-size: 8rem;font-weight: bold;">
+              (暂无取餐记录)<br />
+              {{this.formValue["strTimeNowShow"]}}
+            </p>
+
+          </ion-card-content>
+        </ion-card>
+
+        <ion-list class="OrderList "  *ngIf="formValue['orders'].length>0">
+          <ion-item text-center style="font-size: 2rem;" class="shadow">
+                  <ion-icon name="md-list-box" style="font-size: 2rem;"></ion-icon>
+                  取餐记录
+          </ion-item>
+          <ion-item *ngFor="let order of formValue['orders']" (click)="changeStaus(order.orderid,order.iscooked);">
+            <h2><span style="color:gray;">{{order.payDate | moment: ['hh:mm']}}</span> &nbsp;&nbsp;<span style="font-size:2rem;font-family: TitleFont;">{{order.usercode}} {{order.username}}</span></h2>
+            <p>
+              <ion-note *ngFor='let pro of order.lstPro' [color]="order.iscooked==1?'primary':'danger'" class="shadow">
+               <span style="font-size:2rem;"> {{pro.proname}}</span> ×{{pro.objNum}}
+              </ion-note>
+            </p>
+            <button ion-button clear item-end [color]="order.iscooked==1?'primary':'danger'" style="font-size:1.6rem;">{{order.iscooked==1?'已':'未'}}出餐</button>
+            <button ion-button clear item-end color='gray' icon-start><ion-icon name="ios-arrow-forward"></ion-icon></button>
+          </ion-item>
+        </ion-list>
+
+
+      </ion-col>
+      <ion-col col-1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+</ion-content>

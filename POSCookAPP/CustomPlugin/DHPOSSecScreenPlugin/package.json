@@ -1,0 +1,17 @@
+{
+  "name": "com.esquel.dininghall.secondscreen",
+  "version": "1.0.0",
+  "description": "",
+  "cordova": {
+    "id": "com.esquel.dininghall.secondscreen",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "panli",
+  "license": "ISC"
+}

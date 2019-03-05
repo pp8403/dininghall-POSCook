@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Dining Hall meal take TV
+    </ion-title>
+    
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content text-center>
+  <img src="assets/imgs/loaddata.gif" />
+  <p style="margin: 0;" *ngFor="let msgItem of msgArr">
+    <ion-note color="dark" *ngIf="msgItem.type==0">{{msgItem.msg}}</ion-note>
+    <ion-note color="secondary" *ngIf="msgItem.type==1">{{msgItem.msg}}</ion-note>
+    <ion-note color="danger" *ngIf="msgItem.type==2">{{msgItem.msg}}</ion-note>
+  </p>
+</ion-content>

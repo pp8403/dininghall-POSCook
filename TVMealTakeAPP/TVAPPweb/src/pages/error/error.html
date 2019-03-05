@@ -1,0 +1,82 @@
+<ion-header>
+
+  <ion-navbar hideBackButton="true" color="danger">
+      <ion-buttons left>
+        <button ion-button icon-only (click)="this.viewCtrl.dismiss();">
+          <ion-icon name="arrow-back"></ion-icon>关闭 ({{closeSecond}} 秒)
+        </button>
+      </ion-buttons>
+      <ion-title text-center>
+        {{errTitle}}
+      </ion-title>
+
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="bgimg2" no-shadow>
+
+  <ion-card style="margin-top: 2rem;">
+      <ion-card-content text-center>
+        <p>
+            <button clear ion-button color="danger" outline icon-start style="font-size: 3rem;font-weight: bold;margin-top: 2rem;">
+                <ion-icon name='md-close-circle'></ion-icon>
+                {{msgArr[0]}}
+              </button>
+        </p>
+        <p *ngIf="msgArr.length>1">
+            <ion-note color="dark" style="font-size: 1.6rem;">{{msgArr[1]}}</ion-note>
+          </p>
+        
+      </ion-card-content>
+  
+    </ion-card>
+  
+
+
+    <ion-row text-center style="padding-top: 4rem;">
+        <ion-col></ion-col>
+        <ion-col>
+          <p text-center (click)="this.viewCtrl.dismiss();" 
+            style="display:inline-block;width: 26rem; background-color: #222;color: white;border-radius:0.4rem;padding: 1rem;">
+              <span style="border-bottom: 1px solid white;padding-bottom: 0.8rem;font-size: 4rem;">
+                &nbsp;&nbsp;关闭&nbsp;&nbsp;</span>
+              <br /><br />
+              <span style="font-family: EnFont;margin-top: 2rem;font-size: 2rem;"> Close({{closeSecond}}s)</span>
+          </p>
+        </ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+
+</ion-content>
+
+<ion-footer>
+  <ion-grid text-center>
+      <ion-row>
+        <ion-col style="padding-right: 1rem;padding-bottom: 1rem;">
+            <ion-row>
+                <ion-col></ion-col><ion-col></ion-col>
+                <ion-col >
+                  <table style="text-align: center;font-size: 2.2rem;">
+                    <tr>
+                      <td rowspan="2" style="width: 5.5rem;height: 3rem;">
+                       <span style="border: 1px solid #222;padding: 1rem;font-size: 2.8rem;color:#C2272D;"> {{closeSecond}} </span>
+                      </td>
+                      <td style="padding: 0.5rem;">
+                        <span style="border-bottom: 1px solid #222;padding: 0.5rem;">秒后将自动关闭</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.5rem;font-family: EnFont;font-size: 1.8rem;">SECS TO SCREEN</td>
+                      </tr>
+                  </table>
+                   
+                </ion-col>
+            </ion-row>
+
+        </ion-col>
+        <ion-col col-1></ion-col>
+        </ion-row>
+        </ion-grid>
+</ion-footer>

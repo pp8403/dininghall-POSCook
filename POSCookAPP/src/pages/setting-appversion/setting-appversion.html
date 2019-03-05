@@ -1,0 +1,26 @@
+
+
+
+<ion-content>
+    <ion-card>
+        <ion-card-content text-center>
+            <ion-list>
+            <ion-item>
+              <ion-label>APP版本:</ion-label>
+              <ion-label>v{{appversion}}</ion-label>
+            </ion-item>
+                  
+          </ion-list>
+          <div padding>
+              <button ion-button color="primary2" block (click)="checkUpdate()">检查更新</button>
+            </div>
+
+        </ion-card-content>
+      </ion-card>
+      <br/>
+        <div style="text-align:center;" *ngIf="apkurl.length>0">
+          <my-qrcode  [data]="apkurl" [size]="180" [level]="'H'"  [foreground]="'black'" [logo]="'assets/imgs/icon.png'"></my-qrcode>
+      
+
+        </div>
+</ion-content>

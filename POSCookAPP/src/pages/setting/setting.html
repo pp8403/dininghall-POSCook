@@ -1,0 +1,20 @@
+<!--
+  Generated template for the SettingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+
+<ion-content padding>
+    
+  <ion-tabs tabsPlacement="top">
+    <ion-tab [root]="tab1Root" tabTitle="本地设置"></ion-tab>
+    <ion-tab [root]="tab2Root" tabTitle="远程设置"></ion-tab>
+    <ion-tab [root]="tab3Root" tabTitle="APP版本"></ion-tab>
+  </ion-tabs>
+  <button clear color="light" ion-button icon-only (click)="this.common.GotoBasePage();" style="position:absolute;top:0rem;">
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+</ion-content>

@@ -1,0 +1,141 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
+
+@font-face {
+  font-family: "TitleFont"; 
+  src: url("../assets/fonts/FZYTJ.ttf") format("truetype");
+}
+@font-face {
+  font-family: "TextFont"; 
+  src: url("../assets/fonts/HWZS.ttf") format("truetype");
+}
+@font-face {
+  font-family: "EnFont"; 
+  src: url("../assets/fonts/TrajanPro-Regular.otf") format("truetype");
+}
+@font-face {
+  font-family: "EnFontBold"; 
+  src: url("../assets/fonts/TrajanPro-Bold.otf") format("truetype");
+}
+
+$font-family-md-base: "TextFont";
+$font-family-ios-base: "TextFont";
+$font-family-wp-base: "TextFont";
+// Toast
+$toast-ios-background: #f53d3d;
+$toast-ios-title-color:white;
+//$toast-ios-title-font-size:3rem;
+$toast-md-background: #f53d3d;
+$toast-md-title-color:white;
+//$toast-md-title-font-size:3rem;
+
+$alert-ios-min-width:50%;
+$alert-ios-max-width:80%;
+$alert-max-height:90%;
+$alert-ios-button-font-size:3rem;
+$alert-ios-title-font-size:3rem;
+$alert-ios-sub-title-font-size:2.5rem;
+$alert-ios-message-font-size:3rem;
+
+$alert-md-min-width:50%;
+$alert-md-max-width:80%;
+
+
+$modal-inset-width:100%;
+$modal-inset-height-small:100%;
+$modal-inset-height-large:100%;
+
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+
+
+@import "ionic.globals";
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+
+
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (
+  primary:    #488aff,
+  primary2:    #55acee,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222,
+  gray:       #666,
+  black:      #000,
+  green1:     #57941a,
+  green2:     #80b94b,
+  pink1:      #fd4e4e,
+  red:        #ff0000,
+);
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+
+
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
+
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";
+
+@import "./style";
+@import "./theme.danger";
+
+$alert-button-font-size:2rem;

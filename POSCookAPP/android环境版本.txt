@@ -1,0 +1,17 @@
+ionic cordova platform add android@6.4.0
+
+【AndroidManifest.xml】
+<uses-sdk android:minSdkVersion="19" android:targetSdkVersion="26"/>
+
+
+【project.properties】
+target=android-26
+android.library.reference.1=CordovaLib
+cordova.gradle.include.1=cordova-hot-code-push-local-dev-addon/posclient-chcp-localdev.gradle
+cordova.gradle.include.2=cordova-hot-code-push-plugin/posclient-chcp.gradle
+cordova.gradle.include.3=cordova-plugin-qrscanner/posclient-qrscanner.gradle
+cordova.system.library.1=com.android.support:support-v4:27.1.0+
+cordova.system.library.2=com.android.support:support-v4:23.1.0
+cordova.system.library.3=com.android.support:support-v4:26.+
+cordova.system.library.4=com.android.support:support-v4:26.+
+cordova.system.library.5=com.android.support:appcompat-v7:26.+

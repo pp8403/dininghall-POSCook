@@ -1,0 +1,47 @@
+<!--
+  Generated template for the TvhomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header >
+
+  <ion-navbar>
+      <ion-row>
+          <ion-col text-left>
+            
+          </ion-col>
+          <ion-col text-center>
+              <ion-title>
+                  {{this.formValue["cantingName"]}} - {{this.formValue["machineName"]}} - {{curMealName}}
+              </ion-title>
+          </ion-col>
+          <ion-col text-right>
+              <ion-title>
+                  {{strTimeNowShow}}
+                </ion-title>
+          </ion-col>
+        </ion-row>
+
+        
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content [class]="(formValue['orders'].length==0 || formValue['orders'].length>4)?'bgimg2':'bgimg1'" text-center>
+    <ion-list class="OrderList "  *ngIf="formValue['orders'].length>0">
+        <ion-item *ngFor="let order of formValue['orders']" style="border-bottom:1px solid #9c109c;" >
+          <h2 text-center style="font-size:3rem;">
+            请
+           <ion-note color="purple" style="font-size:6.5rem;font-weight: bold;font-family: TitleFont"> {{order.username}} </ion-note>
+            到
+            <ion-note color="purple" style="font-size:4rem;font-weight: bold;font-family: TitleFont"> {{order.machineName}} </ion-note>
+            取餐
+          </h2>
+          
+          
+        </ion-item>
+      </ion-list>
+
+</ion-content>

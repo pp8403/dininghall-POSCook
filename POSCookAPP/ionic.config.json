@@ -1,0 +1,7 @@
+{
+  "name": "POSAPP",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
