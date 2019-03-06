@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.esquel.dininghall.poscook" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>DiningHallPOSCook</name>
-    <description>DiningHall POS app.</description>
+    <description>DiningHall POS cook app.</description>
     <author email="edui@vip.qq.com" href="http://ionicframework.com/">edui</author>
     <content src="index.html" />
     <access origin="*" />

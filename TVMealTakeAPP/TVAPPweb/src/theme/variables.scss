@@ -152,10 +152,10 @@ ion-navbar{
 }
 
 .bgimg1{
-  background-image: url("../assets/imgs/logo.png");
+  background-image: url("../assets/imgs/logo.png"),url("../assets/imgs/POS_BG1.png");
   background-repeat: no-repeat,no-repeat,no-repeat;
   background-position: right bottom,left bottom;
-  background-size: 15%,100% 100%;
+  background-size: 15%,30%;
 }
 .bgimg2{
   background-image: url("../assets/imgs/logo.png"),url("../assets/imgs/opening.jpeg");

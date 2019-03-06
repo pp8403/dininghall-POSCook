@@ -31,8 +31,8 @@
 
 <ion-content [class]="(formValue['orders'].length==0 || formValue['orders'].length>4)?'bgimg2':'bgimg1'" text-center>
     <ion-list class="OrderList "  *ngIf="formValue['orders'].length>0">
-        <ion-item *ngFor="let order of formValue['orders']" style="border-bottom:1px solid #9c109c;" >
-          <h2 text-center style="font-size:3rem;">
+        <ion-item *ngFor="let order of formValue['orders']" class="listitem" >
+          <h2 text-left style="font-size:3rem;">
             请
            <ion-note color="purple" style="font-size:6.5rem;font-weight: bold;font-family: TitleFont"> {{order.username}} </ion-note>
             到
