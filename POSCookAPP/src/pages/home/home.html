@@ -32,26 +32,50 @@
         </ion-fab>
   <ion-grid text-center style="height:99%;">
     <ion-row >
-      <ion-col col-1 style="padding-top: 6rem;">
+      <ion-col col-4>
+          <ion-list class="OrderList "  *ngIf="formValue['lstOrderCount'].length>0">
+              <ion-item text-center style="font-size: 2rem;" class="shadow">
+                      <ion-icon name="ios-phone-portrait" style="font-size: 2rem;"></ion-icon>
+                      预订信息
+              </ion-item>
+              <ion-item class="listitem" *ngFor="let item of formValue['lstOrderCount']" >
+                <p>
+                    <ion-note color="dark" class="shadow">
+                     <span style="font-size:2rem;"> {{item.proname}}</span>
+                    </ion-note>
+                  </p>
+                  
+                <ion-note item-end  style="font-size:1.7rem;" color="secondary">
+                    预定: {{item.preorder_paidNum}}/{{item.preorder_allNum}}
+                </ion-note>
+                <ion-note item-end style="font-size:1.7rem;" color="primary">
+                    现场: {{item.localorder_paidNum}}/{{item.actualNum-item.preorder_allNum}}
+                </ion-note>
+                
+              </ion-item>
+            </ion-list>
       </ion-col>
+
+
+
       <ion-col >
-        <ion-card style="margin-top: 0rem;" *ngIf="formValue['orders'].length==0">
+        <ion-card style="margin-top: 0rem;" *ngIf="formValue['lstPaidOreder'].length==0">
           <ion-card-content text-center>
             <p style="color:gray;font-size: 6rem;font-weight: bold;">
-              (暂无取餐记录)<br />
+              (暂无点餐记录)<br />
               {{this.formValue["strTimeNowShow"]}}
             </p>
 
           </ion-card-content>
         </ion-card>
 
-        <ion-list class="OrderList "  *ngIf="formValue['orders'].length>0">
+        <ion-list class="OrderList "  *ngIf="formValue['lstPaidOreder'].length>0">
           <ion-item text-center style="font-size: 2rem;" class="shadow">
                   <ion-icon name="md-list-box" style="font-size: 2rem;"></ion-icon>
-                  取餐记录
+                  点餐记录
           </ion-item>
-          <ion-item *ngFor="let order of formValue['orders']" (click)="changeStaus(order.orderid,order.iscooked);">
-            <h2><span style="color:gray;">{{order.payDate | moment: ['hh:mm']}}</span> &nbsp;&nbsp;<span style="font-size:2rem;font-family: TitleFont;">{{order.usercode}} {{order.username}}</span></h2>
+          <ion-item class="listitem" *ngFor="let order of formValue['lstPaidOreder']" (click)="changeStaus(order.orderid,order.iscooked);">
+            <h2><span style="color:gray;">{{order.payDate | moment: ['HH:mm']}}</span> &nbsp;&nbsp;<span style="font-size:2rem;font-family: TitleFont;">{{order.usercode}} {{order.username}}</span></h2>
             <p>
               <ion-note *ngFor='let pro of order.lstPro' [color]="order.iscooked==1?'primary':'danger'" class="shadow">
                <span style="font-size:2rem;"> {{pro.proname}}</span> ×{{pro.objNum}}

@@ -34,7 +34,8 @@ export class HomePage {
     private http: HttpRequestProvider,
     private settimeout: SettimeoutProvider,
   ) {
-    this.formValue["orders"] = [];
+    this.formValue["lstPaidOreder"] = [];
+    this.formValue["lstOrderCount"] = [];
     this.formValue["unCooked"]=0;
     this.formValue["Cooked"]=0;
   }
@@ -59,13 +60,14 @@ export class HomePage {
     //从服务器读取
     //this.common.LoadingShow();
     return this.http.Request("getPaidOrders", {}).then(res => {
-      this.formValue["orders"] = res.data;
+      this.formValue["lstPaidOreder"] = res.data.lstPaidOreder;
+      this.formValue["lstOrderCount"] = res.data.lstOrderCount;
       this.settimeout.regAction(() => {
         this.loadPaidOrders();
       }, 10000);
       let unCooked=0;
       let Cooked=0;
-      for(let order of res.data){
+      for(let order of res.data.lstPaidOreder){
         if(order.iscooked==1) Cooked++;
         else unCooked++;
       }
@@ -73,7 +75,8 @@ export class HomePage {
       this.formValue["Cooked"] =Cooked;
 
     }, err => {
-      this.formValue["orders"] = [];
+      this.formValue["lstPaidOreder"] = [];
+      this.formValue["lstOrderCount"] = [];
 
       let msgArr = [];
       msgArr.push(err);
