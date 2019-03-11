@@ -32,8 +32,8 @@
         </ion-fab>
   <ion-grid text-center style="height:99%;" class="shadow">
     <ion-row >
-      <ion-col col-4>
-          <ion-list class="OrderList "  *ngIf="formValue['lstOrderCount'].length>0">
+      <ion-col col-4 *ngIf="formValue['lstOrderCount'].length>0">
+          <ion-list class="OrderList ">
               <ion-item text-center style="font-size: 2rem;" >
                       <ion-icon name="ios-phone-portrait" style="font-size: 2rem;"></ion-icon>
                       预订信息
