@@ -9,4 +9,12 @@ page-home {
         //border-bottom:1px solid #9c109c;
         box-shadow: 0 -2px 5px -1px #c7c7c7 inset; /*下边阴影*/
     }
+
+    .scrolll{
+        position: absolute;
+        
+        .scroll-content{
+          overflow-y: scroll;
+        }
+    }
 }

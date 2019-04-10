@@ -22,7 +22,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="bgimg2" text-center >
+<ion-content class="bgimg2" text-center style="height:100%;">
 
     <ion-fab right top>
         <button ion-fab color="danger" style="font-size:2rem;">{{ this.formValue["unCooked"]}}</button>
@@ -31,13 +31,15 @@
           <button ion-fab color="primary" style="font-size:2rem;">{{ this.formValue["Cooked"]}}</button>
         </ion-fab>
   <ion-grid text-center style="height:99%;" class="shadow">
-    <ion-row >
-      <ion-col col-4 *ngIf="formValue['lstOrderCount'].length>0">
-          <ion-list class="OrderList ">
+    <ion-row style="height:100%;">
+      <ion-col col-4 *ngIf="formValue['lstOrderCount'].length>0" style="height:100%;">
+
+          <ion-list class="OrderList " style="height:100%;overflow: hidden;">
               <ion-item text-center style="font-size: 2rem;" >
                       <ion-icon name="ios-phone-portrait" style="font-size: 2rem;"></ion-icon>
-                      预订信息
+                      出品信息
               </ion-item>
+              <div style="height:90%;overflow-y:auto;">
               <ion-item class="listitem" *ngFor="let item of formValue['lstOrderCount']" >
                 <p>
                     <ion-note color="dark" class="shadow">
@@ -45,7 +47,7 @@
                     </ion-note>
                   </p>
                   
-                <ion-note item-end  style="font-size:1.7rem;" color="secondary">
+                <ion-note item-end  style="font-size:1.7rem;" color="secondary" *ngIf="item.preorder_allNum>0">
                     预定: {{item.preorder_paidNum}}/{{item.preorder_allNum}}
                 </ion-note>
                 <ion-note item-end style="font-size:1.7rem;" color="primary">
@@ -53,12 +55,14 @@
                 </ion-note>
                 
               </ion-item>
+            </div>
             </ion-list>
+            
       </ion-col>
 
 
 
-      <ion-col >
+      <ion-col style="height:100%;">
         <ion-card style="margin-top: 0rem;" *ngIf="formValue['lstPaidOreder'].length==0">
           <ion-card-content text-center>
             <p style="color:gray;font-size: 6rem;font-weight: bold;">
@@ -69,11 +73,12 @@
           </ion-card-content>
         </ion-card>
 
-        <ion-list class="OrderList "  *ngIf="formValue['lstPaidOreder'].length>0">
+        <ion-list class="OrderList "  *ngIf="formValue['lstPaidOreder'].length>0" style="height:100%;overflow: hidden;">
           <ion-item text-center style="font-size: 2rem;" class="shadow">
                   <ion-icon name="md-list-box" style="font-size: 2rem;"></ion-icon>
                   点餐记录
           </ion-item>
+          <div style="height:90%;overflow-y:scroll;">
           <ion-item class="listitem" *ngFor="let order of formValue['lstPaidOreder']" (click)="changeStaus(order.orderid,order.iscooked);">
             <h2><span style="color:gray;">{{order.payDate | moment: ['HH:mm']}}</span> &nbsp;&nbsp;<span style="font-size:2rem;font-family: TitleFont;">{{order.usercode}} {{order.username}}</span></h2>
             <p>
@@ -84,6 +89,7 @@
             <button ion-button clear item-end [color]="order.iscooked==1?'primary':'danger'" style="font-size:1.6rem;">{{order.iscooked==1?'已':'未'}}出餐</button>
             <button ion-button clear item-end color='gray' icon-start><ion-icon name="ios-arrow-forward"></ion-icon></button>
           </ion-item>
+        </div>
         </ion-list>
 
 

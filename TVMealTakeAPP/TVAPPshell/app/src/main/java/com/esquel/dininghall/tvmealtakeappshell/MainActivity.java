@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    static final String TVURL ="http://192.168.99.28:5599/TVMealTakeHome";
+    static final String TVURL ="http://192.168.99.28:5588/TVMealTakeHome";
 
     static long LastTouchPageTS=0;
     static String UUID;
