@@ -30,6 +30,9 @@ export class CommonProvider {
     //console.log('Hello CommonProvider Provider');
   }
 
+  public getUserCNname(userName){
+    return userName.indexOf('(') > -1 ? userName.match('\\((.+?)\\)')[1] : userName;
+  }
   public GotoBasePage() {
     this.appCtrl.getRootNav().setRoot("BasehomePage");
   }

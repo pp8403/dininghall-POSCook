@@ -30,14 +30,27 @@
 
 
 <ion-content [class]="(formValue['orders'].length==0 || formValue['orders'].length>4)?'bgimg2':'bgimg1'" text-center>
+  <ng-container *ngIf="formValue['orders'].length==0">
+    <p style="margin-top:20vh;">
+        <ion-note class="shadow" color="light" color="danger" style="font-size: 12rem;font-family: TitleFont;font-weight: bold;"  >
+          欢迎光临 {{this.formValue["cantingName"]}}
+        </ion-note>
+      </p>
+      <p  style="margin-top:3rem;">
+        <ion-note class="shadow" color="danger" style="font-size:10rem;font-family: EnFont;" (click)="tt();" >
+          Welcome
+        </ion-note>
+      </p>
+    </ng-container>
     <ion-list class="OrderList "  *ngIf="formValue['orders'].length>0">
         <ion-item *ngFor="let order of formValue['orders']" class="listitem" >
           <h2 text-left style="font-size:3rem;">
-            请
-           <ion-note color="purple" style="font-size:6.5rem;font-weight: bold;font-family: TitleFont"> {{order.username}} </ion-note>
-            到
-            <ion-note color="purple" style="font-size:4rem;font-weight: bold;font-family: TitleFont"> {{order.machineName}} </ion-note>
-            取餐
+              <ion-note color="dark" style="font-size:4rem;">请</ion-note>
+           <ion-note color="danger" style="padding-left: 2rem;font-size:6.5rem;font-weight: bold;font-family: TitleFont"> {{this.common.getUserCNname(order.username)}} </ion-note>
+           
+           <ion-note color="dark" style="font-size:4rem;">取餐</ion-note>
+            <!-- <ion-note color="purple" style="font-size:4rem;font-weight: bold;font-family: TitleFont"> {{order.machineName}} </ion-note> -->
+            
           </h2>
           
           
