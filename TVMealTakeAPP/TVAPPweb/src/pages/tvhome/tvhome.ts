@@ -32,7 +32,8 @@ export class TvhomePage {
     private settimeout:SettimeoutProvider
     ) {
     window['TVHomePage'] = this;
-    this.formValue["orders"] = [];
+    this.formValue["lstCall"] = [];
+    this.formValue["lstWait"] = [];
   }
 
   _TouchPage(): number {
@@ -56,13 +57,15 @@ export class TvhomePage {
 
   getCookedOrders() {
     this.settimeout.clear();
-    this.http.Request("getCookedOrders", {minu:5}).then(res => {
-      this.formValue["orders"] = res.data;
+    this.http.Request("getCookedOrders", {minu:8}).then(res => {
+      this.formValue["lstCall"] = res.data.lstCall;
+      this.formValue["lstWait"] = res.data.lstWait;
       this.settimeout.regAction(() => {
         this.getCookedOrders();
       }, 10000);
     }, err => {
-      this.formValue["orders"] = [];
+      this.formValue["lstCall"] = [];
+      this.formValue["lstWait"] = [];
 
       let msgArr = [];
       msgArr.push(err);

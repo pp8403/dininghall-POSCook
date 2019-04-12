@@ -1,4 +1,27 @@
 page-tvhome {
+    .blinkAni {
+        /*动画属性名，上面keyframes定义的动画名*/
+        animation-name: blinkAni;
+    
+        /*动画持续时间*/
+        animation-duration: 500ms;
+        /*动画速度曲线*/
+        animation-timing-function: ease-in-out;
+        /*动画延迟时间*/
+        animation-delay: 0s;
+        /*定义循环资料，infinite为无限次*/
+        animation-iteration-count: 20;
+        /*定义动画播放方式*/
+        animation-direction: alternate;
+      }
+      @keyframes blinkAni {
+        0% {
+          color: white;
+        }
+        100% {
+          color: red;
+        }
+      }
 
     .OrderList{
         filter:alpha(Opacity=90);-moz-opacity:0.9;opacity: 0.9;
@@ -9,5 +32,9 @@ page-tvhome {
     .listitem{
         //border-bottom:1px solid #9c109c;
         box-shadow: 0 -5px 10px -1px #dadada inset; /*下边阴影*/
+    }
+    .listitem2{
+        //border-bottom:1px solid #9c109c;
+        box-shadow: 0 -5px 10px -1px #f59a9a inset; /*下边阴影*/
     }
 }
