@@ -30,40 +30,8 @@
       <ion-fab right top style="margin-top:6rem;">
           <button ion-fab color="primary" style="font-size:2rem;">{{ this.formValue["Cooked"]}}</button>
         </ion-fab>
-  <ion-grid text-center style="height:99%;" class="shadow">
-    <ion-row style="height:100%;">
-      <ion-col col-4 *ngIf="formValue['lstOrderCount'].length>0" style="height:100%;">
 
-          <ion-list class="OrderList " style="height:100%;overflow: hidden;">
-              <ion-item text-center style="font-size: 2rem;" >
-                      <ion-icon name="ios-phone-portrait" style="font-size: 2rem;"></ion-icon>
-                      出品信息
-              </ion-item>
-              <div style="height:90%;overflow-y:auto;">
-              <ion-item class="listitem" *ngFor="let item of formValue['lstOrderCount']" >
-                <p>
-                    <ion-note color="dark" class="shadow">
-                     <span style="font-size:2rem;"> {{item.proname}}</span>
-                    </ion-note>
-                  </p>
-                  
-                <ion-note item-end  style="font-size:1.7rem;" color="secondary" *ngIf="item.preorder_allNum>0">
-                    预定: {{item.preorder_paidNum}}/{{item.preorder_allNum}}
-                </ion-note>
-                <ion-note item-end style="font-size:1.7rem;" color="primary">
-                    现场: {{item.localorder_paidNum}}/{{item.actualNum-item.preorder_allNum}}
-                </ion-note>
-                
-              </ion-item>
-            </div>
-            </ion-list>
-            
-      </ion-col>
-
-
-
-      <ion-col style="height:100%;">
-        <ion-card style="margin-top: 0rem;" *ngIf="formValue['lstPaidOreder'].length==0">
+        <ion-card style="margin-top: 0rem;" *ngIf="formValue['lstOrder_Cooked'].length==0 && formValue['lstOreder_unCooked'].length==0">
           <ion-card-content text-center>
             <p style="color:gray;font-size: 6rem;font-weight: bold;">
               (暂无点餐记录)<br />
@@ -73,14 +41,56 @@
           </ion-card-content>
         </ion-card>
 
-        <ion-list class="OrderList "  *ngIf="formValue['lstPaidOreder'].length>0" style="height:100%;overflow: hidden;">
+  <ion-grid text-center style="height:99%;" class="shadow" *ngIf="formValue['lstOrder_Cooked'].length>0 ||  formValue['lstOreder_unCooked'].length>0" >
+    <ion-row style="height:100%;">
+      <ion-col style="height:100%;">
+
+          
+
+            <ion-list class="OrderList "  style="height:100%;overflow: hidden;">
+              <ion-item text-center style="font-size: 2rem;" class="shadow">
+                      <ion-icon name="ios-phone-portrait" style="font-size: 2rem;"></ion-icon>
+                      未出餐记录
+                      <ion-note>(按支付时间升序)</ion-note>
+              </ion-item>
+              <div style="height:90%;overflow-y:scroll;" class="scroll">
+              <ion-item class="listitem" *ngFor="let order of formValue['lstOreder_unCooked']" (click)="changeStaus(order.orderid,order.iscooked);">
+                <h2><span style="color:gray;">{{order.payDate | moment: ['HH:mm']}}</span> &nbsp;&nbsp;
+                  <ion-note color="secondary" *ngIf="order.IsPre=='1'">[预定]</ion-note>
+                  <span style="font-size:2rem;font-family: TitleFont;">
+                    {{order.usercode}} {{getUserCNname(order.username)}}
+                  </span>
+                </h2>
+                <p>
+                  <ion-note *ngFor='let pro of order.lstPro' [color]="order.iscooked==1?'primary':'danger'" class="shadow">
+                   <span style="font-size:2rem;"> {{pro.proname}}</span> ×{{pro.objNum}}
+                  </ion-note>
+                </p>
+                <button ion-button clear item-end [color]="order.iscooked==1?'primary':'danger'" style="font-size:1.6rem;">{{order.iscooked==1?'已':'未'}}出餐</button>
+                <button ion-button clear item-end color='gray' icon-start><ion-icon name="ios-arrow-forward"></ion-icon></button>
+              </ion-item>
+            </div>
+            </ion-list>
+            
+      </ion-col>
+
+
+
+      <ion-col style="height:100%;">
+        
+
+        <ion-list class="OrderList "  style="height:100%;overflow: hidden;">
           <ion-item text-center style="font-size: 2rem;" class="shadow">
                   <ion-icon name="md-list-box" style="font-size: 2rem;"></ion-icon>
-                  点餐记录
+                  已出餐记录
+                  <ion-note>(按出餐时间倒序)</ion-note>
           </ion-item>
-          <div style="height:90%;overflow-y:scroll;">
-          <ion-item class="listitem" *ngFor="let order of formValue['lstPaidOreder']" (click)="changeStaus(order.orderid,order.iscooked);">
-            <h2><span style="color:gray;">{{order.payDate | moment: ['HH:mm']}}</span> &nbsp;&nbsp;<span style="font-size:2rem;font-family: TitleFont;">{{order.usercode}} {{order.username}}</span></h2>
+          <div style="height:90%;overflow-y:scroll;" class="scroll">
+          <ion-item class="listitem" *ngFor="let order of formValue['lstOrder_Cooked']" (click)="changeStaus(order.orderid,order.iscooked);">
+            <h2><span style="color:gray;">{{order.payDate | moment: ['HH:mm']}}</span> &nbsp;&nbsp;
+              <ion-note color="secondary" *ngIf="order.IsPre=='1'">[预定]</ion-note>
+              <span style="font-size:2rem;font-family: TitleFont;">{{order.usercode}} {{getUserCNname(order.username)}}</span>
+            </h2>
             <p>
               <ion-note *ngFor='let pro of order.lstPro' [color]="order.iscooked==1?'primary':'danger'" class="shadow">
                <span style="font-size:2rem;"> {{pro.proname}}</span> ×{{pro.objNum}}
@@ -94,8 +104,7 @@
 
 
       </ion-col>
-      <ion-col col-1>
-      </ion-col>
+      
     </ion-row>
   </ion-grid>
 

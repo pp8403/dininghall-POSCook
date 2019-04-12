@@ -34,8 +34,12 @@ export class HomePage {
     private http: HttpRequestProvider,
     private settimeout: SettimeoutProvider,
   ) {
+    /*
     this.formValue["lstPaidOreder"] = [];
     this.formValue["lstOrderCount"] = [];
+    */
+   this.formValue["lstOreder_unCooked"] = [];
+   this.formValue["lstOrder_Cooked"]= [];
     this.formValue["unCooked"]=0;
     this.formValue["Cooked"]=0;
   }
@@ -60,6 +64,7 @@ export class HomePage {
     //从服务器读取
     //this.common.LoadingShow();
     return this.http.Request("getPaidOrders", {}).then(res => {
+      /*
       this.formValue["lstPaidOreder"] = res.data.lstPaidOreder;
       this.formValue["lstOrderCount"] = res.data.lstOrderCount;
       this.settimeout.regAction(() => {
@@ -73,10 +78,25 @@ export class HomePage {
       }
       this.formValue["unCooked"] =unCooked;
       this.formValue["Cooked"] =Cooked;
+      */
+      
+      this.formValue["lstOreder_unCooked"] = res.data.lstOreder_unCooked;
+      this.formValue["lstOrder_Cooked"] = res.data.lstOrder_Cooked;
+      this.settimeout.regAction(() => {
+        this.loadPaidOrders();
+      }, 10000);
+      this.formValue["unCooked"] =res.data.lstOreder_unCooked.length;
+      this.formValue["Cooked"] =res.data.lstOrder_Cooked.length;
+
 
     }, err => {
+      /*
       this.formValue["lstPaidOreder"] = [];
       this.formValue["lstOrderCount"] = [];
+      */
+
+      this.formValue["lstOreder_unCooked"] = [];
+      this.formValue["lstOrder_Cooked"]= [];
 
       let msgArr = [];
       msgArr.push(err);
@@ -122,4 +142,7 @@ export class HomePage {
     },()=>{},0,msg,'确定','取消');
   }
 
+  public getUserCNname(userName){
+    return userName.indexOf('(') > -1 ? userName.match('\\((.+?)\\)')[1] : userName;
+  }
 }

@@ -10,11 +10,20 @@ page-home {
         box-shadow: 0 -2px 5px -1px #c7c7c7 inset; /*下边阴影*/
     }
 
-    .scrolll{
-        position: absolute;
-        
-        .scroll-content{
-          overflow-y: scroll;
-        }
-    }
+    .scroll::-webkit-scrollbar {
+        width: 1rem;
+       }
+        .scroll::-webkit-scrollbar-track {
+        background-color:transparent;
+        -webkit-border-radius: 2em;
+        -moz-border-radius: 2em;
+        border-radius:2em;
+        filter:Alpha(opacity=50);
+       }
+        .scroll::-webkit-scrollbar-thumb {
+        background-color:rgba(248, 69, 69, 0.6);
+        -webkit-border-radius: 2em;
+        -moz-border-radius: 2em;
+        border-radius:2em;
+       }
 }

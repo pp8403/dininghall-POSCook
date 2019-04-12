@@ -56,7 +56,7 @@ export class TvhomePage {
 
   getCookedOrders() {
     this.settimeout.clear();
-    this.http.Request("getCookedOrders", {minu:10}).then(res => {
+    this.http.Request("getCookedOrders", {minu:5}).then(res => {
       this.formValue["orders"] = res.data;
       this.settimeout.regAction(() => {
         this.getCookedOrders();
