@@ -10,7 +10,7 @@ page-tvhome {
         /*动画延迟时间*/
         animation-delay: 0s;
         /*定义循环资料，infinite为无限次*/
-        animation-iteration-count: 20;
+        animation-iteration-count: 10;
         /*定义动画播放方式*/
         animation-direction: alternate;
       }
@@ -22,7 +22,12 @@ page-tvhome {
           color: red;
         }
       }
-
+.nameNormal{
+  color:map-get($map: $colors, $key: danger);
+  font-size:6.5rem;
+  font-weight: bold;
+  font-family: TitleFont;
+}
     .OrderList{
         filter:alpha(Opacity=90);-moz-opacity:0.9;opacity: 0.9;
         -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);

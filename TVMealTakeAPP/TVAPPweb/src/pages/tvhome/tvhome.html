@@ -30,6 +30,7 @@
 
 
 <ion-content [class]="((formValue['lstCall'].length==0 && formValue['lstWait'].length==0)|| formValue['lstCall'].length>4|| formValue['lstWait'].length>6)?'bgimg2':'bgimg1'" text-center>
+  <audio *ngIf="1+1==2" #audioPlay id='audioPlay' src='assets/audio/ding.mp3' hidden='true'></audio>
   <ng-container *ngIf="formValue['lstCall'].length==0 && formValue['lstWait'].length==0">
     <p style="margin-top:20vh;">
       <ion-note class="shadow" color="light" color="danger"
@@ -43,7 +44,7 @@
       </ion-note>
     </p>
   </ng-container>
-  <ng-container *ngIf="formValue['lstCall'].length>0">
+  <ng-container *ngIf="formValue['lstCall'].length>0 || formValue['lstWait'].length>0">
     <ion-row>
       <ion-col>
         <ion-list class="OrderList " *ngIf="formValue['lstCall'].length>0">
@@ -51,8 +52,7 @@
           <ion-item *ngFor="let order of formValue['lstCall']" class="listitem">
             <h2 text-left style="font-size:3rem;">
               <ion-note color="gray" style="font-size:4rem;">请</ion-note>
-              <ion-note color="danger"
-                style="font-size:6.5rem;font-weight: bold;font-family: TitleFont">
+              <ion-note  class="{{order.class}}">
                 {{this.common.getUserCNname(order.username)}}</ion-note>
 
               <ion-note color="gray" style="font-size:4rem;">取餐</ion-note>
@@ -67,9 +67,19 @@
         </ion-list>
       </ion-col>
       <ion-col col-4>
-              <ion-list class="OrderList " *ngIf="formValue['lstWait'].length>0">
+              <ion-list class="OrderList ">
                   <ion-item text-center style="font-size:4rem;" color="primary">
-                          <ion-icon name="alarm"></ion-icon> 排队等候
+                          <ion-icon name="alarm"></ion-icon> 排队候餐
+                    </ion-item>
+                    <ion-item  class="listitem" *ngIf=" formValue['lstWait'].length==0">
+                      <h2 text-left style="font-size:3rem;">
+                        <ion-note color="primary"
+                          style="font-size:3.5rem;font-weight: bold;font-family: TitleFont">
+                        (暂无)
+                        </ion-note>
+                        <!-- <ion-note color="purple" style="font-size:4rem;font-weight: bold;font-family: TitleFont"> {{order.machineName}} </ion-note> -->
+          
+                      </h2>
                     </ion-item>
                 <ion-item *ngFor="let order of formValue['lstWait'];let i = index;" class="listitem">
                   <h2 text-left style="font-size:3rem;">
