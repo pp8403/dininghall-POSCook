@@ -126,7 +126,7 @@ export class HomePage {
 
   changeStaus(orderid,iscooked){
     let msg=`是否确定修改状态为[${iscooked==1?"未出餐":"已出餐"}]`;
-    this.common.AlertWithCancel('',()=>{
+    //this.common.AlertWithCancel('',()=>{
       this.common.LoadingShow();
       this.http.Request("setOrderCooked", {orderid:orderid,cooked:iscooked}).then(res => {
         this.common.LoadingHide();
@@ -139,7 +139,7 @@ export class HomePage {
         this.common.ShowErrorModal("设置出错", msgArr, 20);
         
       });
-    },()=>{},0,msg,'确定','取消');
+    //},()=>{},0,msg,'确定','取消');
   }
 
   public getUserCNname(userName){
