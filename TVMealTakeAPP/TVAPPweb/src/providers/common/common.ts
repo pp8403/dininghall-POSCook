@@ -31,7 +31,9 @@ export class CommonProvider {
   }
 
   public getUserCNname(userName){
-    return userName.indexOf('(') > -1 ? userName.match('\\((.+?)\\)')[1] : userName;
+    let n= userName.indexOf('(') > -1 ? userName.match('\\((.+?)\\)')[1] : userName;
+    if(n.length>10) n=n.substr(0,10);
+    return n;
   }
   public GotoBasePage() {
     this.appCtrl.getRootNav().setRoot("BasehomePage");

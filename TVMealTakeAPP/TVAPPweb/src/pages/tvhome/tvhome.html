@@ -39,7 +39,7 @@
       </ion-note>
     </p>
     <p style="margin-top:3rem;">
-      <ion-note class="shadow" color="danger" style="font-size:10rem;font-family: EnFont;" (click)="tt();">
+      <ion-note class="shadow" color="danger" style="font-size:10rem;font-family: EnFont;" >
         Welcome
       </ion-note>
     </p>
@@ -60,7 +60,7 @@
 
             </h2>
 
-            <ion-note item-end *ngIf="order.IsPre=='1'" color="secondary" style="font-size:2rem;">[预定]</ion-note>
+            <ion-note item-end *ngIf="order.IsPre=='1'" color="secondary" style="font-size:2.5rem;font-weight: bold;">[预定]</ion-note>
 
 
           </ion-item>
@@ -68,8 +68,13 @@
       </ion-col>
       <ion-col col-4>
               <ion-list class="OrderList ">
-                  <ion-item text-center style="font-size:4rem;" color="primary">
-                          <ion-icon name="alarm"></ion-icon> 排队取餐
+                  <ion-item style="font-size:4rem;" color="primary">
+                      <ion-note item-start color="white"><ion-icon name="alarm"></ion-icon></ion-note>
+      
+                      
+                        <ion-row text-center style="font-size:3rem; padding-left: 2rem;">排队取餐</ion-row>
+                        <ion-row text-center style="font-size:3rem; padding-left: 2rem;">预订优先</ion-row>
+                           
                     </ion-item>
                     <ion-item  class="listitem" *ngIf=" formValue['lstWait'].length==0">
                       <h2 text-left style="font-size:3rem;">
@@ -91,7 +96,7 @@
                     <!-- <ion-note color="purple" style="font-size:4rem;font-weight: bold;font-family: TitleFont"> {{order.machineName}} </ion-note> -->
       
                   </h2>
-                  <ion-note item-end *ngIf="order.IsPre=='1'" color="secondary" style="font-size:2rem;">[预定]</ion-note>
+                  <ion-note item-end *ngIf="order.IsPre=='1'" color="secondary" style="font-size:2.5rem;font-weight: bold;">[预定]</ion-note>
       
       
                 </ion-item>
