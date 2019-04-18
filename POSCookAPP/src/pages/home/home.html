@@ -87,7 +87,7 @@
           </ion-item>
           <div style="height:90%;overflow-y:scroll;" class="scroll">
           <ion-item class="listitem" *ngFor="let order of formValue['lstOrder_Cooked']" (click)="changeStaus(order.orderid,order.iscooked);">
-            <h2><span style="color:gray;">{{order.payDate | moment: ['HH:mm']}}</span> &nbsp;&nbsp;
+            <h2><span style="color:gray;">{{order.cookedtime | moment: ['HH:mm']}}</span> &nbsp;&nbsp;
               <ion-note color="secondary" *ngIf="order.IsPre=='1'">[预定]</ion-note>
               <span style="font-size:2rem;font-family: TitleFont;">{{order.usercode}} {{getUserCNname(order.username)}}</span>
             </h2>

@@ -125,6 +125,7 @@ export class HomePage {
 
 
   changeStaus(orderid,iscooked){
+    console.log(orderid,iscooked);
     let msg=`是否确定修改状态为[${iscooked==1?"未出餐":"已出餐"}]`;
     //this.common.AlertWithCancel('',()=>{
       this.common.LoadingShow();
@@ -143,6 +144,8 @@ export class HomePage {
   }
 
   public getUserCNname(userName){
-    return userName.indexOf('(') > -1 ? userName.match('\\((.+?)\\)')[1] : userName;
+    let n=userName.indexOf('(') > -1 ? userName.match('\\((.+?)\\)')[1] : userName;
+    if(n.length>10) n=n.substr(0,10);
+    return n;
   }
 }

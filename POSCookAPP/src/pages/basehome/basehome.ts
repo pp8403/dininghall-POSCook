@@ -30,6 +30,9 @@ export class BasehomePage {
     private update: UpdateProvider,
     private settimeout: SettimeoutProvider
   ) {
+    let urluuid=this.common.getQueryString("uuid");
+    if(urluuid) this.common.SetStorage(this.common.LSName_UUID, urluuid);
+  
 
   }
 
