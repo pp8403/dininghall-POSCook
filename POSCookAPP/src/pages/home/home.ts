@@ -84,9 +84,9 @@ export class HomePage {
       this.formValue["lstOrder_Cooked"] = res.data.lstOrder_Cooked;
       this.settimeout.regAction(() => {
         this.loadPaidOrders();
-      }, 10000);
+      }, 3000);
       this.formValue["unCooked"] =res.data.lstOreder_unCooked.length;
-      this.formValue["Cooked"] =res.data.lstOrder_Cooked.length;
+      this.formValue["Cooked"] =res.data.CookedLength;
 
 
     }, err => {
