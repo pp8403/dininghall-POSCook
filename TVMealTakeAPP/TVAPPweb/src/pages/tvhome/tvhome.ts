@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CommonProvider } from '../../providers/common/common';
 import { HttpRequestProvider } from '../../providers/http-request/http-request';
 import { SettimeoutProvider } from '../../providers/settimeout/settimeout';
+import { AppConfig } from '../../app/AppConfig';
 
 /**
  * Generated class for the TvhomePage page.
@@ -44,7 +45,7 @@ export class TvhomePage {
   ionViewDidEnter() {
     setTimeout(() => {
       this.playDing();
-
+      this.playVoice(['语音测试']);
     }, 2000);
     this.common.GetStorage(this.common.LSName_curMealName).then(curMealName => this.curMealName = curMealName);
     this.common.GetStorage(this.common.LSName_machineName).then(machineName => this.formValue["machineName"] = machineName);
@@ -56,11 +57,11 @@ export class TvhomePage {
       this.strTimeNowShow = this.common.GetNowFormatDate(1);
     }, 1000);
 
-    this.getCookedOrders();
+    this.getCookedOrders(true);
 
   }
 
-  getCookedOrders() {
+  getCookedOrders(isFirst) {
     this.settimeout.clear();
     this.http.Request("getCookedOrders", { minu: 8 }).then(res => {
       let hasNew = false;
@@ -75,17 +76,17 @@ export class TvhomePage {
           newNames.push(this.common.getUserCNname(item.username));
         }
       });
-      if (hasNew) {
-        this.playDing();
-        setTimeout(() => {
-          this.playVoice(newNames);
-        }, 1000);
+      if (hasNew && isFirst == false) {
+          this.playDing();
+          setTimeout(() => {
+            this.playVoice(newNames);
+          }, 1000);
       }
       //console.log(res.data.lstCall);
       this.formValue["lstCall"] = res.data.lstCall;
       this.formValue["lstWait"] = res.data.lstWait;
       this.settimeout.regAction(() => {
-        this.getCookedOrders();
+        this.getCookedOrders(false);
       }, 3000);
 
     }, err => {
@@ -96,7 +97,7 @@ export class TvhomePage {
       msgArr.push(err);
       this.common.ShowErrorModal("系统设置错误", msgArr, 20);
       this.settimeout.regAction(() => {
-        this.getCookedOrders();
+        this.getCookedOrders(isFirst);
       }, 25000);
     });
 
@@ -160,8 +161,9 @@ export class TvhomePage {
 
   }
 
-  voicePer = 0;
+  voicePer = 1;
   playVoice(names) {
+    if (AppConfig.enableVoiceCall == false) return;
     /*
     http://ai.baidu.com/docs#/TTS-API/top
 应用名称 DiningHall
@@ -181,7 +183,8 @@ https://tsn.baidu.com/text2audio?tex=请潘立取餐&lan=zh&cuid= 16148612&ctp=1
 
 
     let text = '';
-    if (names.length == 1) text = `${names[0]},${names[0]},情取餐`;
+    if(names.length==1 && names[0]=="语音测试") text=`${names[0]}`;
+    else if (names.length == 1) text = `${names[0]},${names[0]},情取餐`;
     else if (names.length > 5) {
       for (let i = 0; i < 5; i++) {
         text += `${names[i]},`;

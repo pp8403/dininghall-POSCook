@@ -53,7 +53,7 @@ export class HttpRequestProvider {
       return this.common.GetStorage(this.common.LSName_UUID).then(uuid => {
         // let apiurl = "http://" + apihost;
         // apiurl += "/api/pos/?_action=" + actioin;
-        //apihost='172.16.73.133:1788';
+        //apihost='172.16.73.131:1788';
         let apiurl=AppConfig.APIUrlFormat.replace('{url}',apihost).replace('{action}',actioin);
         let options = {
           headers: {
