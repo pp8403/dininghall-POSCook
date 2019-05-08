@@ -57,7 +57,9 @@ export class TvhomePage {
       this.strTimeNowShow = this.common.GetNowFormatDate(1);
     }, 1000);
 
-    this.getCookedOrders(true);
+    this.settimeout.regAction(() => {
+      this.getCookedOrders(true);
+    }, 100);
 
   }
 
