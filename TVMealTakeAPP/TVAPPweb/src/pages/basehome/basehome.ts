@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, AlertController } from 'ionic-angular';
 
 
 import { CommonProvider } from '../../providers/common/common';
@@ -26,6 +26,7 @@ export class BasehomePage {
     private http: HttpRequestProvider,
     private heartbeat: HearbeatProvider,
     private settimeout:SettimeoutProvider,
+    private alertCtrl:AlertController,
   ) {
     window['TVHomePage'] = this;
     let urluuid=this.common.getQueryString("uuid");
@@ -136,4 +137,41 @@ export class BasehomePage {
     this.navCtrl.push("SettingPage");
   }
 
+
+  modiUUID() {
+    this.alertCtrl.create({
+     title: `请输入新的UUID`,
+     enableBackdropDismiss: false,
+     message: ``,
+     inputs: [
+       {
+         //type: 'number',
+         name: 'UUID',
+         placeholder: ''
+       },
+     ],
+     buttons: [
+       {
+         text: '取消',
+         handler: data => {
+           console.log('Cancel clicked');
+         }
+       },
+       {
+         cssClass: 'buttonConfirm',
+         text: "确定",
+         handler: data => {
+           let input = data.UUID + "";
+           input = input.trim();
+           if (input.length > 0)
+             this.common.SetStorage(this.common.LSName_UUID, input).then(_ => {
+               //this.ionViewDidEnter();
+             });
+
+         }
+       }
+     ]
+   }).present();
+ }
+ 
 }
