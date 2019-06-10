@@ -51,7 +51,7 @@
               <ion-item text-center style="font-size: 2rem;" class="shadow" color="danger">
                       <ion-icon name="ios-phone-portrait" style="font-size: 2rem;"></ion-icon>
                       未出餐记录
-                      <ion-note>(按支付时间升序)</ion-note>
+                      <ion-note>(按支付时间升序)<span style="font-size:6px;">{{pressKeyCode}}</span></ion-note>
               </ion-item>
               <div style="height:90%;overflow-y:scroll;" class="scroll">
               <ion-item class="listitem" *ngFor="let order of formValue['lstOreder_unCooked'];let i=index;" (click)="changeStaus(order.orderid,order.iscooked);">

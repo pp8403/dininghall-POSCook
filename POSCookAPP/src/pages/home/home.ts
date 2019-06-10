@@ -27,6 +27,7 @@ export class HomePage {
   interval = null;
   //timeout_getpro = null;
 
+  pressKeyCode:any;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -65,6 +66,8 @@ export class HomePage {
   regKeyPress(type) {
     if (type == 1) {
       document.onkeypress = (e) => {
+        this.pressKeyCode=e.which;
+       console.log(`====>key:${e.which}`);
         //let code = String.fromCharCode(e.which);
         if (e.which >= 49 && e.which <= 57) {//数字1-9
           let index = parseInt(String.fromCharCode(e.which));
@@ -81,7 +84,6 @@ export class HomePage {
             console.log(`====>key:Enter,changeStaus(${order.orderid},${order.iscooked})`);
           }
         }
-       console.log(`====>key:${e.which}`);
       };
     } else {
       document.onkeypress = (e) => { };
