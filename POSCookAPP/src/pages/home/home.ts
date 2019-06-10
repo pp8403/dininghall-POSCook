@@ -77,7 +77,7 @@ export class HomePage {
             this.changeStaus(order.orderid, order.iscooked);
             console.log(`====>key:${index},changeStaus(${order.orderid},${order.iscooked})`);
           }
-        } else if (e.which == 13) {
+        } else if (e.which == 13 || e.which == 10 ) {
           if (this.formValue['lstOreder_unCooked'].length > 0) {
             let order = this.formValue['lstOreder_unCooked'][0];
             this.changeStaus(order.orderid, order.iscooked);
