@@ -3,7 +3,7 @@
 
     <ion-row>
       <ion-col text-left>
-        <ion-title (click)="gotoSysSetting();">
+        <ion-title (tap)="gotoSysSetting();">
           <ion-icon name="settings"></ion-icon> 设置
         </ion-title>
 
@@ -54,11 +54,11 @@
                       <ion-note>(按支付时间升序)<span style="font-size:6px;">{{pressKeyCode}}</span></ion-note>
               </ion-item>
               <div style="height:90%;overflow-y:scroll;" class="scroll">
-              <ion-item class="listitem" *ngFor="let order of formValue['lstOreder_unCooked'];let i=index;" (click)="changeStaus(order.orderid,order.iscooked);">
+              <ion-item class="listitem" *ngFor="let order of formValue['lstOreder_unCooked'];let i=index;" (tap)="changeStaus(order.orderid,order.iscooked);">
                 <h2><span style="color:red;">{{i+1}}.</span> <span style="color:gray;">{{order.payDate | moment: ['HH:mm']}}</span> &nbsp;&nbsp;
                   <ion-note color="secondary" *ngIf="order.IsPre=='1'">[预定]</ion-note>
-                  <span style="font-size:2rem;font-family: TitleFont;color:gray;">
-                    {{order.usercode}} <span style="font-size:2.5rem;color:#3b3b3b;">{{getUserCNname(order.username)}}</span>
+                  <span style="font-size:2rem;font-family: TitleFont;color:#3b3b3b;">
+                    {{order.usercode}} <span style="font-size:2.5rem;">{{getUserCNname(order.username)}}</span>
                   </span>
                 </h2>
                 <p>
@@ -90,10 +90,10 @@
                   <ion-note>(按出餐时间倒序)</ion-note>
           </ion-item>
           <div style="height:90%;overflow-y:scroll;" class="scroll">
-          <ion-item class="listitem" *ngFor="let order of formValue['lstOrder_Cooked'];let i=index;" (click)="changeStaus(order.orderid,order.iscooked);">
+          <ion-item class="listitem" *ngFor="let order of formValue['lstOrder_Cooked'];let i=index;" (tap)="changeStaus(order.orderid,order.iscooked);">
             <h2><span style="color:red;">{{this.formValue["Cooked"]-i}}.</span><span style="color:gray;">{{order.cookedtime | moment: ['HH:mm']}}</span> &nbsp;&nbsp;
               <ion-note color="secondary" *ngIf="order.IsPre=='1'">[预定]</ion-note>
-              <span style="font-size:2rem;font-family: TitleFont;">{{order.usercode}} {{getUserCNname(order.username)}}</span>
+              <span style="font-size:2rem;font-family: TitleFont;color:#3b3b3b;">{{order.usercode}} {{getUserCNname(order.username)}}</span>
             </h2>
             <p>
               <ion-note *ngFor='let pro of order.lstPro' [color]="order.iscooked==1?'primary':'danger'" class="shadow">
