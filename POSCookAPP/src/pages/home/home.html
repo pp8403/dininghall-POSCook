@@ -57,16 +57,16 @@
               <ion-item class="listitem" *ngFor="let order of formValue['lstOreder_unCooked'];let i=index;" (click)="changeStaus(order.orderid,order.iscooked);">
                 <h2><span style="color:red;">{{i+1}}.</span> <span style="color:gray;">{{order.payDate | moment: ['HH:mm']}}</span> &nbsp;&nbsp;
                   <ion-note color="secondary" *ngIf="order.IsPre=='1'">[预定]</ion-note>
-                  <span style="font-size:2rem;font-family: TitleFont;">
-                    {{order.usercode}} {{getUserCNname(order.username)}}
+                  <span style="font-size:2rem;font-family: TitleFont;color:gray;">
+                    {{order.usercode}} <span style="font-size:2.5rem;color:#3b3b3b;">{{getUserCNname(order.username)}}</span>
                   </span>
                 </h2>
                 <p>
                   <ion-note *ngFor='let pro of order.lstPro' [color]="order.iscooked==1?'primary':'danger'" class="shadow">
-                   <span style="font-size:2rem;"> {{pro.proname}}</span> 
+                   <span style="font-size:3.5rem;font-weight: bold;"> {{pro.proname}}</span> 
                    <span 
                [style.color]="pro.objNum>1?'blueviolet':'gray'"
-               [style.font-size]="pro.objNum>1?'2rem':'1.5rem'"
+               [style.font-size]="pro.objNum>1?'3rem':'2.5rem'"
                >×{{pro.objNum}}</span>
                   </ion-note>
                 </p>
